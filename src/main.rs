@@ -29,8 +29,8 @@ impl fmt::Display for DiffEvent {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         for diff in &self.diffs {
             let message = match diff {
-                Diff::Added => format!("🎉📈 {} has been added to the bounty", self.name),
-                Diff::Removed => format!("🚨❌ {} has been removed from the bounty", self.name),
+                Diff::Added => format!("🎉📈 {} has a new bounty", self.name),
+                Diff::Removed => format!("🚨❌ {} removed their bounty", self.name),
                 Diff::MaxPayoutChanged(new, prev) => {
                     if new > prev {
                         format!(
@@ -57,11 +57,11 @@ impl fmt::Display for DiffEvent {
                     self.name, date
                 ),
                 Diff::AssetsAdded(asset) => format!(
-                    "🆕💎 {} has added {} to the bounty",
+                    "🆕💎 {} added {} to their bounty",
                     self.name, asset
                 ),
                 Diff::AssetsRemoved(asset) => format!(
-                    "⚠️💔 {} has removed {} from the bounty",
+                    "⚠️💔 {} removed {} from their bounty",
                     self.name, asset
                 ),
             };
